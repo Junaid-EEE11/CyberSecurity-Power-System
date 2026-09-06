@@ -1,0 +1,27 @@
+Clear
+
+New Circuit.TinyFeeder basekv=13.8 pu=1.00 phases=3 bus1=sourcebus
+
+! Define line codes
+New Linecode.3phase nphases=3 r1=0.19 r0=0.40 x1=0.40 x0=1.20 units=km
+New Linecode.2phase nphases=2 r1=0.25 r0=0.50 x1=0.45 x0=1.30 units=km
+New Linecode.1phase nphases=1 r1=0.35 r0=0.60 x1=0.50 x0=1.40 units=km
+
+! Define lines
+New Line.Line1 Bus1=sourcebus.1.2.3 Bus2=bus2.1.2.3 Linecode=3phase Length=1.0 Units=km
+New Line.Line2 Bus1=bus2.1.2 Bus2=bus3.1.2 Linecode=2phase Length=0.8 Units=km
+New Line.Line3 Bus1=bus3.1 Bus2=bus4.1 Linecode=1phase Length=0.5 Units=km
+
+! Define unbalanced loads
+New Load.Load2A Bus1=bus2.1 Phases=1 kV=7.967 kW=300 kvar=100 Model=1 Vminpu=0.8 Vmaxpu=1.2
+New Load.Load2B Bus1=bus2.2 Phases=1 kV=7.967 kW=200 kvar=80 Model=1 Vminpu=0.8 Vmaxpu=1.2
+New Load.Load2C Bus1=bus2.3 Phases=1 kV=7.967 kW=250 kvar=90 Model=1 Vminpu=0.8 Vmaxpu=1.2
+
+New Load.Load3A Bus1=bus3.1 Phases=1 kV=7.967 kW=150 kvar=50 Model=1 Vminpu=0.8 Vmaxpu=1.2
+New Load.Load3B Bus1=bus3.2 Phases=1 kV=7.967 kW=180 kvar=60 Model=1 Vminpu=0.8 Vmaxpu=1.2
+
+New Load.Load4A Bus1=bus4.1 Phases=1 kV=7.967 kW=100 kvar=40 Model=1 Vminpu=0.8 Vmaxpu=1.2
+
+Set VoltageBases = [13.8]
+CalcVoltageBases
+Solve

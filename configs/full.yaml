@@ -1,0 +1,34 @@
+# Full publication experiment configuration
+
+includes:
+  - "model.yaml"
+  - "attacks.yaml"
+  - "robustness.yaml"
+
+experiment:
+  name: "full_publication_study"
+  mode: "full"
+  seed: 42
+  seeds: [42, 101, 202, 303, 404]
+  device: "auto"
+
+simulation:
+  feeder_type: "ieee123"
+  feeder_file: "data/external/ieee123/IEEE123Master.dss"
+  days: 180
+  resolution_minutes: 15
+  split_days:
+    train: 120
+    calibration: 30
+    test: 30
+  pv_penetration: 0.25
+  pv_seed: 42
+
+data:
+  window_length: 12
+  features: ["v_mag_pu", "v_ang_rad", "p_inj_pu", "q_inj_pu"]
+  base_mva: 5.0
+
+training:
+  epochs: 30
+  batch_size: 64

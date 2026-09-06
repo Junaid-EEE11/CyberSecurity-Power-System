@@ -1,0 +1,34 @@
+# Quick smoke-test configuration (runs fast on CPU for CI and verification)
+
+includes:
+  - "model.yaml"
+  - "attacks.yaml"
+  - "robustness.yaml"
+
+experiment:
+  name: "quick_verification"
+  mode: "quick"
+  seed: 42
+  seeds: [42]
+  device: "cpu"
+
+simulation:
+  feeder_type: "tiny"
+  feeder_file: "tests/fixtures/tiny_feeder.dss"
+  days: 6
+  resolution_minutes: 15
+  split_days:
+    train: 3
+    calibration: 1
+    test: 2
+  pv_penetration: 0.3
+  pv_seed: 42
+
+data:
+  window_length: 8
+  features: ["v_mag_pu", "v_ang_rad", "p_inj_pu", "q_inj_pu"]
+  base_mva: 1.0
+
+training:
+  epochs: 3
+  batch_size: 16

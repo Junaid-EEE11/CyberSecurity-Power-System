@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gridguard"
+version = "0.1.0"
+description = "Physics-Guided Graph-Temporal Anomaly Detection with Calibrated False-Alarm Control for False Data Injection Attacks in Unbalanced Distribution Grids"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    {name = "GridGuard Research Team"}
+]
+dependencies = [
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "pandas>=2.0.0",
+    "pyarrow>=12.0.0",
+    "scikit-learn>=1.2.0",
+    "torch>=2.0.0",
+    "networkx>=3.0",
+    "OpenDSSDirect.py>=0.9.0",
+    "pyyaml>=6.0",
+    "matplotlib>=3.7.0",
+    "pytest>=7.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "isort>=5.12.0"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]

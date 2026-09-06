@@ -1,0 +1,41 @@
+# Attack generation configuration
+
+attacks:
+  step:
+    enabled: true
+    strengths:
+      weak: 0.03
+      medium: 0.08
+      strong: 0.15
+    target_node_fraction: 0.05
+    duration_range: [4, 16] # in 15-min intervals (1 to 4 hours)
+
+  ramp:
+    enabled: true
+    strengths:
+      weak: 0.03
+      medium: 0.08
+      strong: 0.15
+    target_node_fraction: 0.05
+    duration_range: [6, 20]
+
+  replay:
+    enabled: true
+    lag_steps_range: [24, 96] # 6 to 24 hours lag
+    target_node_fraction: 0.05
+    duration_range: [4, 12]
+
+  coordinated:
+    enabled: true
+    strengths:
+      medium: 0.08
+      strong: 0.15
+    subgraph_hop_radius: 2
+    duration_range: [4, 16]
+
+  operating_point:
+    enabled: true
+    is_unseen: true
+    load_perturbation_range: [-0.30, 0.30]
+    target_node_fraction: 0.08
+    duration_range: [4, 12]

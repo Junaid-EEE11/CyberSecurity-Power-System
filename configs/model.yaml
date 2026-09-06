@@ -1,0 +1,32 @@
+# Model architectural hyperparameters and training settings
+
+model:
+  name: "proposed"
+  graph_type: "GraphSAGE"
+  graph_layers: 2
+  graph_hidden_dim: 64
+  graph_out_dim: 64
+  gru_hidden_dim: 64
+  gru_layers: 1
+  decoder_hidden_dim: 64
+  dropout: 0.1
+  activation: "relu"
+
+training:
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.00001
+  epochs: 30
+  early_stopping_patience: 7
+  lambda_physics: 0.1
+  grad_clip: 1.0
+
+scoring:
+  w_rec: 0.5
+  w_phys: 0.5
+  aggregation: "top_k_mean"  # "max", "mean", "top_k_mean"
+  top_k: 3
+
+calibration:
+  method: "split_conformal"
+  alpha_values: [0.01, 0.05]

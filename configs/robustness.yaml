@@ -1,0 +1,23 @@
+# Robustness evaluation matrix
+
+robustness:
+  measurement_noise:
+    none: 0.0
+    low: 0.005
+    moderate: 0.015
+
+  missing_packet_rate:
+    none: 0.0
+    low: 0.01
+    moderate: 0.05
+
+  operating_shifts:
+    standard:
+      load_scale: 1.0
+      pv_scale: 1.0
+    high_demand:
+      load_scale: 1.25
+      pv_scale: 1.0
+    high_pv:
+      load_scale: 1.0
+      pv_scale: 1.5
